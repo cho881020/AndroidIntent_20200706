@@ -37,5 +37,19 @@ class MainActivity : AppCompatActivity() {
         }
 
 
+        smsBtn.setOnClickListener {
+            val inputPhone = phoneNumEdt.text.toString()
+
+            val inputContent = smsContentEdt.text.toString()
+
+            val myUri = Uri.parse("smsto:${inputPhone}")
+            val myIntent = Intent(Intent.ACTION_SENDTO, myUri)
+
+//            입력한 내용을 putExtra로 들고가자
+            myIntent.putExtra("sms_body", inputContent)
+
+            startActivity(myIntent)
+        }
+
     }
 }
